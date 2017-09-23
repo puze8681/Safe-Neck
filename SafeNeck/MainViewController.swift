@@ -13,6 +13,10 @@ class MainViewController: UIViewController {
     var todayNoticeNum: UILabel!
     var weekNoticeNum: UILabel!
     
+    var dailyButton: TermUIButton!
+    var weeklyButton: TermUIButton!
+    var monthlyButton: TermUIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Main"
@@ -71,7 +75,76 @@ class MainViewController: UIViewController {
         view.addSubview(dateLabel)
     }
     
+    //기간 선택 버튼 생성
+    func setGenderButtonView(){
+        dailyButton = TermUIButton(frame: CGRect(x: 10, y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "DAILY")
+        dailyButton.addTarget(MainViewController(), action: #selector(dailyButtonClicked), for: .touchUpInside)
+        dailyButton.isSelected = true
+        dailyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        dailyButton.termLabel.textColor = UIColor.white
+        view.addSubview(dailyButton)
+        
+        weeklyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.5 + 5), y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "WEEKLY")
+        weeklyButton.addTarget(MainViewController(), action: #selector(weeklyButtonClicked), for: .touchUpInside)
+        weeklyButton.isSelected = false
+        weeklyButton.backgroundColor = UIColor.white
+        weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        view.addSubview(weeklyButton)
+        
+        monthlyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.5 + 5), y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "MONTHLY")
+        monthlyButton.addTarget(MainViewController(), action: #selector(monthlyButtonClicked), for: .touchUpInside)
+        monthlyButton.isSelected = false
+        monthlyButton.backgroundColor = UIColor.white
+        monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        view.addSubview(monthlyButton)
+    }
+    
+    //일간 선택 버튼 실행
+    func dailyButtonClicked(){
+        if(dailyButton.isSelected){
+        }else{
+            dailyButton.isSelected = true
+            weeklyButton.isSelected = false
+            monthlyButton.isSelected = false
+            
+            dailyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            dailyButton.termLabel.textColor = UIColor.white
+            monthlyButton.backgroundColor = UIColor.white
+            monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        }
+    }
+    
+    //주간 선택 버튼 실행
+    func weeklyButtonClicked(){
+        if(weeklyButton.isSelected){
+        }else{
+            dailyButton.isSelected = false
+            weeklyButton.isSelected = true
+            monthlyButton.isSelected = false
+            
+            weeklyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            weeklyButton.termLabel.textColor = UIColor.white
+            monthlyButton.backgroundColor = UIColor.white
+            monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        }
+    }
 
+    //월간 선택 버튼 실행
+    func monthlyButtonClicked(){
+        if(weeklyButton.isSelected){
+        }else{
+            dailyButton.isSelected = false
+            weeklyButton.isSelected = false
+            monthlyButton.isSelected = true
+           
+            dailyButton.backgroundColor = UIColor.white
+            dailyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            weeklyButton.backgroundColor = UIColor.white
+            weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            monthlyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            monthlyButton.termLabel.textColor = UIColor.white
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -131,6 +204,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    //날짜 커스텀 뷰
     class DateUIView: UIView{
         
         override init(frame: CGRect){
@@ -147,7 +221,6 @@ class MainViewController: UIViewController {
         }
         
         func setLayOut(){
-            
             let date = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy.MM.dd"
@@ -173,11 +246,39 @@ class MainViewController: UIViewController {
             dateLabel.textAlignment = NSTextAlignment.center
             dateLabel.text = result
             addSubview(dateLabel)
-            
         }
-    
     }
 
+    //일간,주간, 월간 버튼
+    class TermUIButton: UIButton{
+    
+        var text : String!
+        var termLabel : UILabel!
+        
+        init(frame: CGRect, getText: String) {
+            super.init(frame: frame)
+            self.backgroundColor = .white
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1).cgColor
+            self.layer.cornerRadius = 5
+            self.text = getText
+            setLayOut()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        func setLayOut() {
+            termLabel = UILabel(frame: CGRect(x: frame.width * 0.5 - 40, y: frame.height * 0.5 - 10, width: 80,  height: 20))
+            termLabel.text = text
+            termLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            termLabel.textAlignment = NSTextAlignment.center
+            addSubview(termLabel)
+        }
+    }
+
+    //스와이프 타입 세팅
     func setSwipeType(){
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
@@ -188,6 +289,7 @@ class MainViewController: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
     }
     
+    //스와이프 응답 받기
     func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
         if let swipeGesture = gesture as? UISwipeGestureRecognizer{
             switch swipeGesture.direction{
