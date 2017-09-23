@@ -31,7 +31,8 @@ class MainViewController: UIViewController {
         setUISetting()
         setNavigationBarView()
         setNoticeNumView()
-        setDateLabel()
+        setDateLabelView()
+        setGenderButtonView()
         setSwipeType()
     }
     
@@ -70,28 +71,28 @@ class MainViewController: UIViewController {
     }
     
     //중간 날짜 라벨 생성
-    func setDateLabel(){
+    func setDateLabelView(){
         let dateLabel = DateUIView(frame: CGRect(x: 10, y: view.frame.height * 0.35 + 10, width: view.frame.width - 20, height: view.frame.height * 0.09))
         view.addSubview(dateLabel)
     }
     
     //기간 선택 버튼 생성
     func setGenderButtonView(){
-        dailyButton = TermUIButton(frame: CGRect(x: 10, y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "DAILY")
+        dailyButton = TermUIButton(frame: CGRect(x: 15, y: view.frame.height * 0.5, width: (view.frame.width * 0.3 - 15), height: view.frame.height * 0.1 - 30) , getText: "DAILY")
         dailyButton.addTarget(MainViewController(), action: #selector(dailyButtonClicked), for: .touchUpInside)
         dailyButton.isSelected = true
         dailyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
         dailyButton.termLabel.textColor = UIColor.white
         view.addSubview(dailyButton)
         
-        weeklyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.5 + 5), y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "WEEKLY")
+        weeklyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.35 + 7.5), y: view.frame.height * 0.5, width: (view.frame.width * 0.3 - 15), height: view.frame.height * 0.1 - 30) , getText: "WEEKLY")
         weeklyButton.addTarget(MainViewController(), action: #selector(weeklyButtonClicked), for: .touchUpInside)
         weeklyButton.isSelected = false
         weeklyButton.backgroundColor = UIColor.white
         weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
         view.addSubview(weeklyButton)
         
-        monthlyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.5 + 5), y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "MONTHLY")
+        monthlyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.7), y: view.frame.height * 0.5, width: (view.frame.width * 0.3 - 15), height: view.frame.height * 0.1 - 30) , getText: "MONTHLY")
         monthlyButton.addTarget(MainViewController(), action: #selector(monthlyButtonClicked), for: .touchUpInside)
         monthlyButton.isSelected = false
         monthlyButton.backgroundColor = UIColor.white
@@ -109,6 +110,8 @@ class MainViewController: UIViewController {
             
             dailyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
             dailyButton.termLabel.textColor = UIColor.white
+            weeklyButton.backgroundColor = UIColor.white
+            weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
             monthlyButton.backgroundColor = UIColor.white
             monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
         }
@@ -122,6 +125,8 @@ class MainViewController: UIViewController {
             weeklyButton.isSelected = true
             monthlyButton.isSelected = false
             
+            dailyButton.backgroundColor = UIColor.white
+            dailyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
             weeklyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
             weeklyButton.termLabel.textColor = UIColor.white
             monthlyButton.backgroundColor = UIColor.white
@@ -131,7 +136,7 @@ class MainViewController: UIViewController {
 
     //월간 선택 버튼 실행
     func monthlyButtonClicked(){
-        if(weeklyButton.isSelected){
+        if(monthlyButton.isSelected){
         }else{
             dailyButton.isSelected = false
             weeklyButton.isSelected = false
