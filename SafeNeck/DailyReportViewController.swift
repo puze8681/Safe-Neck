@@ -29,7 +29,7 @@ class DailyReportViewController: UIViewController {
         setCommentView()
         setConditionView()
         setReportNoticeLabel()
-        setChartView()
+        setCommentView()
         setSwipeType()
     }
     

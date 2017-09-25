@@ -106,7 +106,9 @@ class MainViewController: UIViewController {
     }
     
     func setBarGraphView(){
-        barGraphView = BarGraphUIView(frame: CGRect(x: 10, y: (view.frame.height * 0.66) - 40 , width: view.frame.width - 20, height: (view.frame.height * 0.24) + 35))
+        let count:[Int] = [4,5,2,6,1,3]
+        let time:[Int] = [14,15,16,17,18,19]
+        barGraphView = BarGraphUIView(frame: CGRect(x: 10, y: (view.frame.height * 0.66) - 40 , width: view.frame.width - 20, height: (view.frame.height * 0.24) + 35), count: count, time: time)
         view.addSubview(barGraphView)
     }
     
