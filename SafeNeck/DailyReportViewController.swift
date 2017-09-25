@@ -90,10 +90,10 @@ class DailyReportViewController: UIViewController {
         scrollView.addSubview(contentLabel)
     }
     
-    func setChartView(){
-        let chartView = ChartUIView(frame: CGRect(x: 10, y: view.frame.height * 0.7 + 15, width: view.frame.width - 20, height: view.frame.height * 0.4))
-        scrollView.addSubview(chartView)
-    }
+//    func setChartView(){
+//        let chartView = ChartUIView(frame: CGRect(x: 10, y: view.frame.height * 0.7 + 15, width: view.frame.width - 20, height: view.frame.height * 0.4))
+//        scrollView.addSubview(chartView)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -168,16 +168,16 @@ class DailyReportViewController: UIViewController {
             let toDayConditionView = ConditionNodeUIView(frame: CGRect(x: frame.width - frame.height * 0.72 + 10, y: frame.height * 0.2 + 15, width: frame.height * 0.72, height: frame.height * 0.8 - 15), typeThree, 2)
             addSubview(toDayConditionView)
             
-            let leftShiftX = frame.width * 0.5 - frame.height * 0.36
-            let leftShiftY = frame.height * 0.6 - 40
+            let leftShiftX = frame.width * 0.5 - frame.height * 0.36 + 10
+            let leftShiftY = frame.height * 0.8 - 28
             
             let leftShiftImage = UIImageView(frame: CGRect(x: leftShiftX, y: leftShiftY, width: 10, height: 10))
             leftShiftImage.image = UIImage(named: "ic_daily_next")
             leftShiftImage.contentMode = .scaleAspectFit
             addSubview(leftShiftImage)
             
-            let rightShiftX = frame.width - frame.height * 0.72 - 10
-            let rightShiftY = frame.height * 0.6 - 40
+            let rightShiftX = frame.width - frame.height * 0.72 + 20
+            let rightShiftY = frame.height * 0.8 - 28
             
             let rightShiftImage = UIImageView(frame: CGRect(x: rightShiftX, y: rightShiftY, width: 10, height: 10))
             rightShiftImage.image = UIImage(named: "ic_daily_next")
@@ -273,11 +273,13 @@ class DailyReportViewController: UIViewController {
             titleCommentLable.textAlignment = NSTextAlignment.left
             addSubview(titleCommentLable)
             
-            let subTitleCommentLable = UILabel(frame: CGRect(x: frame.height * 0.9, y: frame.height * 0.4, width: frame.width - (frame.height * 1.6), height: frame.height * 0.2))
+            let subTitleCommentLable = UILabel(frame: CGRect(x: frame.height * 0.9, y: frame.height * 0.35, width: frame.width - (frame.height * 1.6), height: frame.height * 0.5))
             subTitleCommentLable.text = comment
             subTitleCommentLable.textColor = UIColor.white
             subTitleCommentLable.font = UIFont(name: "NanumBarunGothicOTFBold", size: 16)
             subTitleCommentLable.textAlignment = NSTextAlignment.left
+            subTitleCommentLable.numberOfLines = 2
+            subTitleCommentLable.lineBreakMode = .byTruncatingTail
             addSubview(subTitleCommentLable)
         }
     }
@@ -285,9 +287,20 @@ class DailyReportViewController: UIViewController {
     //차트 뷰
     class ChartUIView: UIView{
         
-    override init(frame: CGRect){
+        var soGood: Int!
+        var good: Int!
+        var standard: Int!
+        var bad: Int!
+        var soBad: Int!
+        
+        init(frame: CGRect, soGood: Int, good: Int, standard: Int, bad: Int, soBad: Int){
             super.init(frame: frame)
             self.backgroundColor = .white
+            self.soGood = soGood
+            self.good = good
+            self.standard = standard
+            self.bad = bad
+            self.soBad = soBad
             self.layer.borderWidth = 0
             self.layer.cornerRadius = 5
             self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)

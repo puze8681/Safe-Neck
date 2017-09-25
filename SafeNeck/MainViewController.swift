@@ -294,13 +294,14 @@ class MainViewController: UIViewController {
     }
     
     class BarGraphUIView: UIView{
+
+        var count: [Int] = [4,5,2,6,1,3]
+        var time : [Int] = [14,15,16,17,18,19]
         
-        let term = "   "
-        let count: [Int] = [4,5,2,6,1,3]
-        let time : [Int] = [14,15,16,17,18,19]
-        
-        override init(frame: CGRect){
+        init(frame: CGRect, count: [Int], time: [Int]){
             super.init(frame: frame)
+            self.count = count
+            self.time = time
             self.backgroundColor = UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1)
             self.layer.borderWidth = 1
             self.layer.borderColor = UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1).cgColor
@@ -318,39 +319,31 @@ class MainViewController: UIViewController {
             underLineView.backgroundColor = UIColor.green
             addSubview(underLineView)
             
+            setChartView(self.count)
+            setCountView(self.count)
+            setTimeView(self.time)
+            
             let countLabel = UILabel(frame: CGRect(x: 0, y: frame.height * 0.7, width: frame.width, height: frame.height * 0.1))
             countLabel.textColor = UIColor.white
             countLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             countLabel.textAlignment = NSTextAlignment.center
-            countLabel.text = stringCountLabel(count, term)
             
             let timeLable = UILabel(frame: CGRect(x: 0, y: frame.height * 0.9, width: frame.width, height: frame.height * 0.1))
             timeLable.textColor = UIColor.green
             timeLable.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             countLabel.textAlignment = NSTextAlignment.center
-            timeLable.text = stringTimeLabel(time, term)
         }
         
-        func stringCountLabel(_ count: [Int], _ term: String) -> String{
-            var string: String = "123"
-            string += term
-            for i in count {
-                string += String(i)
-                string += "시"
-                string += term
-            }
-            return string
+        func setChartView(_ count : [Int]){
+            
         }
         
-        func stringTimeLabel(_ time: [Int], _ term: String) -> String{
-            var string: String = ""
-            string += term
-            for i in time {
-                string += String(i)
-                string += "회"
-                string += term
-            }
-            return string
+        func setCountView(_ count : [Int]){
+            
+        }
+        
+        func setTimeView(_ time : [Int]){
+            
         }
     }
 
