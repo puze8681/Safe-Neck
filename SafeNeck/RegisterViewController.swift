@@ -37,7 +37,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func setUISetting(){
         
         //배경 색
-        view.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        view.backgroundColor = UIColor.green
         
         //내비게이션 바 아래쪽 뷰 세팅
         let basicUI = UIView(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height-64))
@@ -129,8 +129,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         let registerButton = UIButton(frame: CGRect(x: 0, y: view.frame.height * 0.9, width: view.frame.width, height: view.frame.height * 0.1))
         registerButton.setTitle("regist", for: .normal)
-        registerButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTFUltraLight", size: 16)
-        registerButton.setTitleColor(UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1), for: .normal)
+        registerButton.setTitleColor(UIColor.white, for: .normal)
+        registerButton.backgroundColor = UIColor.green
+        registerButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTFLight", size: 16)
         registerButton.contentHorizontalAlignment = .center
         registerButton.addTarget(RegisterViewController(), action: #selector(registButtonClicked), for: .touchUpInside)
         view.addSubview(registerButton)
@@ -149,7 +150,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     //회원가입 텍스트필드 기본 세팅
     func registerTextFieldBasicSetting(_ field: UIView, _ textField : UITextField) {
         field.layer.cornerRadius = 5
-        field.layer.borderColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1).cgColor
+        field.layer.borderColor = UIColor.green.cgColor
         field.layer.borderWidth = 1.5
         textField.textColor = UIColor.black
         textField.delegate = self

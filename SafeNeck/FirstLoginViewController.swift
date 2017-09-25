@@ -42,7 +42,7 @@ class FirstLoginViewController: UIViewController{
     func setUISetting(){
         
         //배경 색
-        view.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        view.backgroundColor = UIColor.green
         
         //내비게이션 바 아래쪽 뷰 세팅
         let basicUI = UIView(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height-64))
@@ -80,7 +80,7 @@ class FirstLoginViewController: UIViewController{
         femaleButton = genderUIButton(frame: CGRect(x: 10, y: view.frame.height * 0.2 + 10, width: (view.frame.width * 0.5 - 15), height: view.frame.height * 0.1 - 20) , getText: "FEMALE")
         femaleButton.addTarget(FirstLoginViewController(), action: #selector(femaleButtonClicked), for: .touchUpInside)
         femaleButton.isSelected = true
-        femaleButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        femaleButton.backgroundColor = UIColor.green
         femaleButton.genderLabel.textColor = UIColor.white
         view.addSubview(femaleButton)
         
@@ -88,7 +88,7 @@ class FirstLoginViewController: UIViewController{
         maleButton.addTarget(FirstLoginViewController(), action: #selector(maleButtonClicked), for: .touchUpInside)
         maleButton.isSelected = false
         maleButton.backgroundColor = UIColor.white
-        maleButton.genderLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        maleButton.genderLabel.textColor = UIColor.green
         view.addSubview(maleButton)
     }
     
@@ -106,7 +106,7 @@ class FirstLoginViewController: UIViewController{
         let startButton = UIButton(frame: CGRect(x: 0, y: view.frame.height * 0.9, width: view.frame.width, height: view.frame.height * 0.1))
         startButton.setTitle("start", for: .normal)
         startButton.setTitleColor(UIColor.white, for: .normal)
-        startButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        startButton.backgroundColor = UIColor.green
         startButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTFLight", size: 16)
         startButton.contentHorizontalAlignment = .center
         startButton.addTarget(FirstLoginViewController(), action: #selector(startButtonClicked), for: .touchUpInside)
@@ -119,10 +119,10 @@ class FirstLoginViewController: UIViewController{
         }else{
             femaleButton.isSelected = true
             maleButton.isSelected = false
-            femaleButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            femaleButton.backgroundColor = UIColor.green
             femaleButton.genderLabel.textColor = UIColor.white
             maleButton.backgroundColor = UIColor.white
-            maleButton.genderLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            maleButton.genderLabel.textColor = UIColor.green
         }
     }
     
@@ -132,10 +132,10 @@ class FirstLoginViewController: UIViewController{
         }else{
             maleButton.isSelected = true
             femaleButton.isSelected = false
-            maleButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            maleButton.backgroundColor = UIColor.green
             maleButton.genderLabel.textColor = UIColor.white
             femaleButton.backgroundColor = UIColor.white
-            femaleButton.genderLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            femaleButton.genderLabel.textColor = UIColor.green
         }
     }
     
@@ -222,7 +222,7 @@ class FirstLoginViewController: UIViewController{
             super.init(frame: frame)
             self.backgroundColor = .white
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1).cgColor
+            self.layer.borderColor = UIColor.green.cgColor
             self.layer.cornerRadius = 5
             self.text = getText
             setLayOut()
@@ -246,7 +246,7 @@ class FirstLoginViewController: UIViewController{
         
         var text: String!
         var label : UILabel!
-        var subLable: UILabel!
+        var subLabel: UILabel!
         let ageStringValue: [String] = ["10대", "20대", "30대", "40대", "50대", "60대", "70 이상"]
         var pickerView: UIPickerView!
         
@@ -265,10 +265,10 @@ class FirstLoginViewController: UIViewController{
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
             switch row {
             case 0...6:
-                subLable.text = "Your AGE is " + ageStringValue[row]
+                subLabel.text = "Your AGE is " + ageStringValue[row]
                 break
             default:
-                subLable.text = "Choose your AGE"
+                subLabel.text = "Choose your AGE"
                 break
             }
         }
@@ -278,7 +278,7 @@ class FirstLoginViewController: UIViewController{
             self.text = getText
             self.backgroundColor = .white
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1).cgColor
+            self.layer.borderColor = UIColor.green.cgColor
             self.layer.cornerRadius = 5
             self.pickerView = UIPickerView(frame: CGRect(x: 10, y: 50, width: frame.width - 20, height: frame.height - 60))
             pickerView.delegate = self
@@ -295,15 +295,15 @@ class FirstLoginViewController: UIViewController{
             label = UILabel(frame: CGRect(x: 10, y: 5, width: frame.width - 20, height: 30))
             label.text = text
             label.font = UIFont(name: "NanumBarunGothicOTF", size: 16)
-            label.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            label.textColor = UIColor.green
             label.textAlignment = NSTextAlignment.center
             addSubview(label)
             
-            subLable = UILabel(frame: CGRect(x: 10, y: 45, width: frame.width - 20, height: 30))
-            subLable.textColor = UIColor.darkGray
-            subLable.font = UIFont(name: "NanumBarunGothicOTFLight", size: 10)
-            subLable.textAlignment = NSTextAlignment.center
-            addSubview(subLable)
+            subLabel = UILabel(frame: CGRect(x: 10, y: 45, width: frame.width - 20, height: 30))
+            subLabel.textColor = UIColor.darkGray
+            subLabel.font = UIFont(name: "NanumBarunGothicOTFLight", size: 10)
+            subLabel.textAlignment = NSTextAlignment.center
+            addSubview(subLabel)
         }
     }
 
@@ -312,7 +312,7 @@ class FirstLoginViewController: UIViewController{
         
         var text: String!
         var label : UILabel!
-        var subLable: UILabel!
+        var subLabel: UILabel!
         let positionStringValue: [String] = ["(초,중,고) 학생", "대학생", "직장인", "일반인"]
         var pickerView: UIPickerView!
         
@@ -331,11 +331,12 @@ class FirstLoginViewController: UIViewController{
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
             switch row {
             case 0...4:
-                subLable.text = "Your POSITION is " + positionStringValue[row]
+                subLabel.text = "Your POSITION is " + positionStringValue[row]
                 break
             default:
-                subLable.text = "Choose your POSITION"
+                subLabel.text = "Choose your POSITION"
             }
+            subLabel.textColor = UIColor.green
         }
 
         init(frame: CGRect, getText: String){
@@ -343,7 +344,7 @@ class FirstLoginViewController: UIViewController{
             self.text = getText
             self.backgroundColor = .white
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1).cgColor
+            self.layer.borderColor = UIColor.green.cgColor
             self.layer.cornerRadius = 5
             self.pickerView = UIPickerView(frame: CGRect(x: 10, y: 50, width: frame.width - 20, height: frame.height - 60))
             pickerView.delegate = self
@@ -360,15 +361,15 @@ class FirstLoginViewController: UIViewController{
             label = UILabel(frame: CGRect(x: 10, y: 5, width: frame.width - 20, height: 30))
             label.text = text
             label.font = UIFont(name: "NanumBarunGothicOTF", size: 16)
-            label.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            label.textColor = UIColor.green
             label.textAlignment = NSTextAlignment.center
             addSubview(label)
             
-            subLable = UILabel(frame: CGRect(x: 10, y: 45, width: frame.width - 20, height: 30))
-            subLable.textColor = UIColor.darkGray
-            subLable.font = UIFont(name: "NanumBarunGothicOTFLight", size: 10)
-            subLable.textAlignment = NSTextAlignment.center
-            addSubview(subLable)
+            subLabel = UILabel(frame: CGRect(x: 10, y: 45, width: frame.width - 20, height: 30))
+            subLabel.textColor = UIColor.darkGray
+            subLabel.font = UIFont(name: "NanumBarunGothicOTFLight", size: 10)
+            subLabel.textAlignment = NSTextAlignment.center
+            addSubview(subLabel)
         }
     }
     

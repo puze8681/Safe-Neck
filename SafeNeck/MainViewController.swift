@@ -17,6 +17,10 @@ class MainViewController: UIViewController {
     var weeklyButton: TermUIButton!
     var monthlyButton: TermUIButton!
     
+    var barGraphView: BarGraphUIView!
+    
+    let cellID = "cellID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Main"
@@ -32,7 +36,8 @@ class MainViewController: UIViewController {
         setNavigationBarView()
         setNoticeNumView()
         setDateLabelView()
-        setGenderButtonView()
+        setTermButtonView()
+        setBarGraphView()
         setSwipeType()
     }
     
@@ -58,10 +63,10 @@ class MainViewController: UIViewController {
     
     //상단 알림개수 뷰 생성
     func setNoticeNumView(){
-        let todayNoticeUIView: NoticeUIView = NoticeUIView(frame: CGRect(x: 10, y: view.frame.height * 0.1 + 15, width: view.frame.width * 0.5 - 15, height: view.frame.height * 0.2 + 10), getTitle: "오늘 받은 알림 개수", getContent: "일간 알림 개수 목표치는 15회입니다.", getBackColor: UIColor.white, getTextColor: UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1))
+        let todayNoticeUIView: NoticeUIView = NoticeUIView(frame: CGRect(x: 10, y: view.frame.height * 0.1 + 15, width: view.frame.width * 0.5 - 15, height: view.frame.height * 0.2 + 10), getTitle: "오늘 받은 알림 개수", getContent: "일간 알림 개수 목표치는 15회입니다.", getBackColor: UIColor.white, getTextColor: UIColor.green)
         view.addSubview(todayNoticeUIView)
         
-        let weekNoticeUIView: NoticeUIView = NoticeUIView(frame: CGRect(x: view.frame.width * 0.5 + 5, y: view.frame.height * 0.1 + 15, width: view.frame.width * 0.5 - 15, height: view.frame.height * 0.2 + 10), getTitle: "주간 받은 알림 개수", getContent: "주간 알림 개수 목표치는 45회입니다.", getBackColor: UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1), getTextColor: UIColor.white)
+        let weekNoticeUIView: NoticeUIView = NoticeUIView(frame: CGRect(x: view.frame.width * 0.5 + 5, y: view.frame.height * 0.1 + 15, width: view.frame.width * 0.5 - 15, height: view.frame.height * 0.2 + 10), getTitle: "주간 받은 알림 개수", getContent: "주간 알림 개수 목표치는 45회입니다.", getBackColor: UIColor.green, getTextColor: UIColor.white)
         view.addSubview(weekNoticeUIView)
     }
 
@@ -77,11 +82,11 @@ class MainViewController: UIViewController {
     }
     
     //기간 선택 버튼 생성
-    func setGenderButtonView(){
+    func setTermButtonView(){
         dailyButton = TermUIButton(frame: CGRect(x: 15, y: view.frame.height * 0.5, width: (view.frame.width * 0.3 - 15), height: view.frame.height * 0.1 - 30) , getText: "DAILY")
         dailyButton.addTarget(MainViewController(), action: #selector(dailyButtonClicked), for: .touchUpInside)
         dailyButton.isSelected = true
-        dailyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        dailyButton.backgroundColor = UIColor.green
         dailyButton.termLabel.textColor = UIColor.white
         view.addSubview(dailyButton)
         
@@ -89,15 +94,20 @@ class MainViewController: UIViewController {
         weeklyButton.addTarget(MainViewController(), action: #selector(weeklyButtonClicked), for: .touchUpInside)
         weeklyButton.isSelected = false
         weeklyButton.backgroundColor = UIColor.white
-        weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        weeklyButton.termLabel.textColor = UIColor.green
         view.addSubview(weeklyButton)
         
         monthlyButton = TermUIButton(frame: CGRect(x: (view.frame.width * 0.7), y: view.frame.height * 0.5, width: (view.frame.width * 0.3 - 15), height: view.frame.height * 0.1 - 30) , getText: "MONTHLY")
         monthlyButton.addTarget(MainViewController(), action: #selector(monthlyButtonClicked), for: .touchUpInside)
         monthlyButton.isSelected = false
         monthlyButton.backgroundColor = UIColor.white
-        monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        monthlyButton.termLabel.textColor = UIColor.green
         view.addSubview(monthlyButton)
+    }
+    
+    func setBarGraphView(){
+        barGraphView = BarGraphUIView(frame: CGRect(x: 10, y: (view.frame.height * 0.66) - 40 , width: view.frame.width - 20, height: (view.frame.height * 0.24) + 35))
+        view.addSubview(barGraphView)
     }
     
     //일간 선택 버튼 실행
@@ -108,12 +118,12 @@ class MainViewController: UIViewController {
             weeklyButton.isSelected = false
             monthlyButton.isSelected = false
             
-            dailyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            dailyButton.backgroundColor = UIColor.green
             dailyButton.termLabel.textColor = UIColor.white
             weeklyButton.backgroundColor = UIColor.white
-            weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            weeklyButton.termLabel.textColor = UIColor.green
             monthlyButton.backgroundColor = UIColor.white
-            monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            monthlyButton.termLabel.textColor = UIColor.green
         }
     }
     
@@ -126,11 +136,11 @@ class MainViewController: UIViewController {
             monthlyButton.isSelected = false
             
             dailyButton.backgroundColor = UIColor.white
-            dailyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
-            weeklyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            dailyButton.termLabel.textColor = UIColor.green
+            weeklyButton.backgroundColor = UIColor.green
             weeklyButton.termLabel.textColor = UIColor.white
             monthlyButton.backgroundColor = UIColor.white
-            monthlyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            monthlyButton.termLabel.textColor = UIColor.green
         }
     }
 
@@ -143,10 +153,10 @@ class MainViewController: UIViewController {
             monthlyButton.isSelected = true
            
             dailyButton.backgroundColor = UIColor.white
-            dailyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            dailyButton.termLabel.textColor = UIColor.green
             weeklyButton.backgroundColor = UIColor.white
-            weeklyButton.termLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
-            monthlyButton.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            weeklyButton.termLabel.textColor = UIColor.green
+            monthlyButton.backgroundColor = UIColor.green
             monthlyButton.termLabel.textColor = UIColor.white
         }
     }
@@ -233,20 +243,20 @@ class MainViewController: UIViewController {
 
             let leftClampLabel = UILabel(frame: CGRect(x: frame.width * 0.1, y: 0, width: frame.width * 0.8, height: frame.height))
             leftClampLabel.text = "<"
-            leftClampLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            leftClampLabel.textColor = UIColor.green
             leftClampLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 20)
             leftClampLabel.textAlignment = NSTextAlignment.left
             addSubview(leftClampLabel)
             
             let rightClampLabel = UILabel(frame: CGRect(x: frame.width * 0.1, y: 0, width: frame.width * 0.8, height: frame.height))
             rightClampLabel.text = ">"
-            rightClampLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            rightClampLabel.textColor = UIColor.green
             rightClampLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 20)
             rightClampLabel.textAlignment = NSTextAlignment.right
             addSubview(rightClampLabel)
 
             let dateLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
-            dateLabel.textColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+            dateLabel.textColor = UIColor.green
             dateLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 16)
             dateLabel.textAlignment = NSTextAlignment.center
             dateLabel.text = result
@@ -264,7 +274,7 @@ class MainViewController: UIViewController {
             super.init(frame: frame)
             self.backgroundColor = .white
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1).cgColor
+            self.layer.borderColor = UIColor.green.cgColor
             self.layer.cornerRadius = 5
             self.text = getText
             setLayOut()
@@ -280,6 +290,67 @@ class MainViewController: UIViewController {
             termLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             termLabel.textAlignment = NSTextAlignment.center
             addSubview(termLabel)
+        }
+    }
+    
+    class BarGraphUIView: UIView{
+        
+        let term = "   "
+        let count: [Int] = [4,5,2,6,1,3]
+        let time : [Int] = [14,15,16,17,18,19]
+        
+        override init(frame: CGRect){
+            super.init(frame: frame)
+            self.backgroundColor = UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1)
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1).cgColor
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.layer.cornerRadius = 5
+            setLayOut()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        func setLayOut(){
+            let underLineView = UIView(frame: CGRect(x: 10, y: frame.height * 0.8 - 1, width: frame.width - 20, height: 1))
+            underLineView.backgroundColor = UIColor.green
+            addSubview(underLineView)
+            
+            let countLabel = UILabel(frame: CGRect(x: 0, y: frame.height * 0.7, width: frame.width, height: frame.height * 0.1))
+            countLabel.textColor = UIColor.white
+            countLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            countLabel.textAlignment = NSTextAlignment.center
+            countLabel.text = stringCountLabel(count, term)
+            
+            let timeLable = UILabel(frame: CGRect(x: 0, y: frame.height * 0.9, width: frame.width, height: frame.height * 0.1))
+            timeLable.textColor = UIColor.green
+            timeLable.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            countLabel.textAlignment = NSTextAlignment.center
+            timeLable.text = stringTimeLabel(time, term)
+        }
+        
+        func stringCountLabel(_ count: [Int], _ term: String) -> String{
+            var string: String = "123"
+            string += term
+            for i in count {
+                string += String(i)
+                string += "시"
+                string += term
+            }
+            return string
+        }
+        
+        func stringTimeLabel(_ time: [Int], _ term: String) -> String{
+            var string: String = ""
+            string += term
+            for i in time {
+                string += String(i)
+                string += "회"
+                string += term
+            }
+            return string
         }
     }
 

@@ -43,6 +43,8 @@
 		83F37DEC1F75BC8E0013CCEE /* ic_report_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F37DE61F75BC8E0013CCEE /* ic_report_off.png */; };
 		83F37DED1F75BC8E0013CCEE /* ic_report_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F37DE71F75BC8E0013CCEE /* ic_report_on.png */; };
 		83F37DEF1F75EA960013CCEE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F37DEE1F75EA960013CCEE /* UIView.swift */; };
+		83F37DF11F77B9F80013CCEE /* OptionChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F37DF01F77B9F80013CCEE /* OptionChangeViewController.swift */; };
+		83F37DF31F78204D0013CCEE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F37DF21F78204D0013CCEE /* UIColor.swift */; };
 		83FFCF411F61A72400B04582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FFCF401F61A72400B04582 /* AppDelegate.swift */; };
 		83FFCF431F61A72400B04582 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FFCF421F61A72400B04582 /* ViewController.swift */; };
 		83FFCF481F61A72400B04582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FFCF471F61A72400B04582 /* Assets.xcassets */; };
@@ -104,6 +106,8 @@
 		83F37DE61F75BC8E0013CCEE /* ic_report_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_report_off.png; path = "../../../stac_safe-neck-master/android/resource_xxxhdpi/ic_report_off.png"; sourceTree = "<group>"; };
 		83F37DE71F75BC8E0013CCEE /* ic_report_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_report_on.png; path = "../../../stac_safe-neck-master/android/resource_xxxhdpi/ic_report_on.png"; sourceTree = "<group>"; };
 		83F37DEE1F75EA960013CCEE /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		83F37DF01F77B9F80013CCEE /* OptionChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionChangeViewController.swift; sourceTree = "<group>"; };
+		83F37DF21F78204D0013CCEE /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		83FFCF3D1F61A72400B04582 /* SafeNeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeNeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FFCF401F61A72400B04582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83FFCF421F61A72400B04582 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				838FB0811F6589510047E6B6 /* Images */,
 				838FB07C1F6588D50047E6B6 /* Fonts */,
 				83F37DEE1F75EA960013CCEE /* UIView.swift */,
+				83F37DF21F78204D0013CCEE /* UIColor.swift */,
 				83FFCF401F61A72400B04582 /* AppDelegate.swift */,
 				83FFCF421F61A72400B04582 /* ViewController.swift */,
 				8372ED1D1F6FBCD100949A6D /* LoginViewController.swift */,
@@ -216,6 +221,7 @@
 				83F37DDC1F7571E00013CCEE /* DailyReportViewController.swift */,
 				83F37DD61F74E72C0013CCEE /* MainViewController.swift */,
 				83F37DD81F75719A0013CCEE /* OptionViewController.swift */,
+				83F37DF01F77B9F80013CCEE /* OptionChangeViewController.swift */,
 			);
 			path = SafeNeck;
 			sourceTree = "<group>";
@@ -385,7 +391,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F37DEF1F75EA960013CCEE /* UIView.swift in Sources */,
+				83F37DF31F78204D0013CCEE /* UIColor.swift in Sources */,
 				83F37DDB1F7571BE0013CCEE /* TabBarViewController.swift in Sources */,
+				83F37DF11F77B9F80013CCEE /* OptionChangeViewController.swift in Sources */,
 				8372ED1E1F6FBCD100949A6D /* LoginViewController.swift in Sources */,
 				8372ED181F6D86CC00949A6D /* RegisterViewController.swift in Sources */,
 				83F37DD51F72C5CA0013CCEE /* FirstLoginViewController.swift in Sources */,

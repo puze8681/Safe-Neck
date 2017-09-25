@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         //백그라운드 컬러
-        view.backgroundColor = UIColor(red: 31/255, green: 183/255, blue: 149/255, alpha: 1)
+        view.backgroundColor = .green
     }
     
     //로고 이미지 생성
@@ -58,43 +58,42 @@ class ViewController: UIViewController {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: view.frame.height * 0.8, width: view.frame.width, height: view.frame.height * 0.25))
         titleLabel.text = "STA + C 2017"
         titleLabel.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
-        titleLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        titleLabel.textColor = .white
         titleLabel.textAlignment = NSTextAlignment.center
         view.addSubview(titleLabel)
         
         let contentLabel = UILabel(frame: CGRect(x: 0, y: view.frame.height * 0.8, width: view.frame.width, height: view.frame.height * 0.31))
         contentLabel.text = "선린인터넷고등학교 팀 Safe neck"
         contentLabel.font = UIFont(name: "NanumBarunGothicOTFLight", size: 12)
-        contentLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        contentLabel.textColor = .white
         contentLabel.textAlignment = NSTextAlignment.center
         view.addSubview(contentLabel)
     }
     
     //회원가입, 로그인 버튼 뷰 생성
     func setButtonView(){
-        let registerButton = UIButton(frame: CGRect(x: view.frame.width * 0.5 - 100, y: view.frame.height * 0.7 - 5, width: 200, height: view.frame.height * 0.05))
+        
+        let loginButton = UIButton(frame: CGRect(x: view.frame.width * 0.5 - 80, y: view.frame.height * 0.7 - 5, width: 160, height: view.frame.height * 0.05))
+        loginButton.setTitle("LOGIN", for: .normal)
+        loginButton.setTitleColor(UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1), for: .normal)
+        loginButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTFLight", size: 16)
+        loginButton.layer.borderColor = UIColor(red: 23/255, green: 138/255, blue: 113/255, alpha: 1).cgColor
+        loginButton.layer.borderWidth = 1
+        loginButton.layer.cornerRadius = 5
+        loginButton.addTarget(LoginViewController(), action: #selector(loginButtonClicked), for: .touchUpInside)
+        view.addSubview(loginButton)
+        
+        let registerButton = UIButton(frame: CGRect(x: view.frame.width * 0.5 - 80, y: view.frame.height * 0.8 - 5, width: 160, height: view.frame.height * 0.05))
         registerButton.setTitle("REGISTER", for: .normal)
-        registerButton.setTitleColor(UIColor.black, for: .normal)
-        registerButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTF", size: 16)
-        registerButton.layer.cornerRadius = 10
-        registerButton.layer.shadowColor = UIColor.black.cgColor
-        registerButton.layer.shadowOpacity = 0.2
-        registerButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        registerButton.layer.shadowRadius = 2
+        registerButton.setTitleColor(UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1), for: .normal)
+        registerButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTFLight", size: 16)
+        registerButton.layer.borderColor = UIColor(red: 23/255, green: 138/255, blue: 113/255, alpha: 1).cgColor
+        registerButton.layer.borderWidth = 1
+        registerButton.layer.cornerRadius = 5
         registerButton.addTarget(RegisterViewController(), action: #selector(registerButtonClicked), for: .touchUpInside)
         view.addSubview(registerButton)
         
-        let loginButton = UIButton(frame: CGRect(x: view.frame.width * 0.5 - 100, y: view.frame.height * 0.8 - 5, width: 200, height: view.frame.height * 0.05))
-        loginButton.setTitle("LOGIN", for: .normal)
-        loginButton.setTitleColor(UIColor.black, for: .normal)
-        loginButton.titleLabel?.font = UIFont(name: "NanumBarunGothicOTF", size: 16)
-        loginButton.layer.cornerRadius = 10
-        loginButton.layer.shadowColor = UIColor.black.cgColor
-        loginButton.layer.shadowOpacity = 0.2
-        loginButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        loginButton.layer.shadowRadius = 2
-        loginButton.addTarget(LoginViewController(), action: #selector(loginButtonClicked), for: .touchUpInside)
-        view.addSubview(loginButton)
+        
     }
     
     //회원가입 버튼 실행 <- 완전 중요
