@@ -334,18 +334,140 @@ class MainViewController: UIViewController {
             timeLable.textColor = UIColor.green
             timeLable.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             countLabel.textAlignment = NSTextAlignment.center
+            
         }
         
         func setChartView(_ count : [Int]){
+            var max = count[0]
+            for i in count {
+                if(max < i){
+                    max = i
+                }
+            }
             
+            let height1 = ((frame.height * 0.8) - 10) * (CGFloat(count[0]) / CGFloat(max))
+            let height2 = ((frame.height * 0.8) - 10) * (CGFloat(count[1]) / CGFloat(max))
+            let height3 = ((frame.height * 0.8) - 10) * (CGFloat(count[2]) / CGFloat(max))
+            let height4 = ((frame.height * 0.8) - 10) * (CGFloat(count[3]) / CGFloat(max))
+            let height5 = ((frame.height * 0.8) - 10) * (CGFloat(count[4]) / CGFloat(max))
+            let height6 = ((frame.height * 0.8) - 10) * (CGFloat(count[5]) / CGFloat(max))
+
+            let bar1 = UIView(frame:CGRect(x: (frame.width * 0.1), y: (frame.height * 0.8) - height1, width: frame.width * 0.1, height: height1))
+            bar1.backgroundColor = UIColor.green
+            addSubview(bar1)
+            
+            let bar2 = UIView(frame:CGRect(x: (frame.width * 0.24), y: (frame.height * 0.8) - height2, width: frame.width * 0.1, height: height2))
+            bar2.backgroundColor = UIColor.green
+            addSubview(bar2)
+            
+            let bar3 = UIView(frame:CGRect(x: (frame.width * 0.38), y: (frame.height * 0.8) - height3, width: frame.width * 0.1, height: height3))
+            bar3.backgroundColor = UIColor.green
+            addSubview(bar3)
+            
+            let bar4 = UIView(frame:CGRect(x: (frame.width * 0.52), y: (frame.height * 0.8) - height4, width: frame.width * 0.1, height: height4))
+            bar4.backgroundColor = UIColor.green
+            addSubview(bar4)
+            
+            let bar5 = UIView(frame:CGRect(x: (frame.width * 0.66), y: (frame.height * 0.8) - height5, width: frame.width * 0.1, height: height5))
+            bar5.backgroundColor = UIColor.green
+            addSubview(bar5)
+            
+            let bar6 = UIView(frame:CGRect(x: (frame.width * 0.8), y: (frame.height * 0.8) - height6, width: frame.width * 0.1, height: height6))
+            bar6.backgroundColor = UIColor.green
+            addSubview(bar6)
         }
         
         func setCountView(_ count : [Int]){
+            let bar1 = UILabel(frame:CGRect(x: (frame.width * 0.1), y: (frame.height * 0.7), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar1.textColor = UIColor.white
+            bar1.text = String(count[0])+"회"
+            bar1.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar1.textAlignment = NSTextAlignment.center
+            addSubview(bar1)
             
+            let bar2 = UILabel(frame:CGRect(x: (frame.width * 0.24), y: (frame.height * 0.7), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar2.backgroundColor = UIColor.green
+            bar2.textColor = UIColor.white
+            bar2.text = String(count[1])+"회"
+            bar2.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar2.textAlignment = NSTextAlignment.center
+            addSubview(bar2)
+            
+            let bar3 = UILabel(frame:CGRect(x: (frame.width * 0.38), y: (frame.height * 0.7), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar3.backgroundColor = UIColor.green
+            bar3.textColor = UIColor.white
+            bar3.text = String(count[2])+"회"
+            bar3.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar3.textAlignment = NSTextAlignment.center
+            addSubview(bar3)
+            
+            let bar4 = UILabel(frame:CGRect(x: (frame.width * 0.52), y: (frame.height * 0.7), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar4.backgroundColor = UIColor.green
+            bar4.textColor = UIColor.white
+            bar4.text = String(count[3])+"회"
+            bar4.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar4.textAlignment = NSTextAlignment.center
+            addSubview(bar4)
+            
+            let bar5 = UILabel(frame:CGRect(x: (frame.width * 0.66), y: (frame.height * 0.7), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar5.backgroundColor = UIColor.green
+            bar5.textColor = UIColor.white
+            bar5.text = String(count[4])+"회"
+            bar5.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar5.textAlignment = NSTextAlignment.center
+            addSubview(bar5)
+            
+            let bar6 = UILabel(frame:CGRect(x: (frame.width * 0.8), y: (frame.height * 0.7), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar6.backgroundColor = UIColor.green
+            bar6.textColor = UIColor.white
+            bar6.text = String(count[5])+"회"
+            bar6.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar6.textAlignment = NSTextAlignment.center
+            addSubview(bar6)
         }
         
         func setTimeView(_ time : [Int]){
+            let bar1 = UILabel(frame:CGRect(x: (frame.width * 0.1), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar1.textColor = UIColor.green
+            bar1.text = String(count[0])+"시"
+            bar1.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar1.textAlignment = NSTextAlignment.center
+            addSubview(bar1)
             
+            let bar2 = UILabel(frame:CGRect(x: (frame.width * 0.24), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar2.textColor = UIColor.green
+            bar2.text = String(count[1])+"시"
+            bar2.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar2.textAlignment = NSTextAlignment.center
+            addSubview(bar2)
+            
+            let bar3 = UILabel(frame:CGRect(x: (frame.width * 0.38), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar3.textColor = UIColor.green
+            bar3.text = String(count[2])+"시"
+            bar3.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar3.textAlignment = NSTextAlignment.center
+            addSubview(bar3)
+            
+            let bar4 = UILabel(frame:CGRect(x: (frame.width * 0.52), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar4.textColor = UIColor.green
+            bar4.text = String(count[3])+"시"
+            bar4.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar4.textAlignment = NSTextAlignment.center
+            addSubview(bar4)
+            
+            let bar5 = UILabel(frame:CGRect(x: (frame.width * 0.66), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar5.textColor = UIColor.green
+            bar5.text = String(count[4])+"시"
+            bar5.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar5.textAlignment = NSTextAlignment.center
+            addSubview(bar5)
+            
+            let bar6 = UILabel(frame:CGRect(x: (frame.width * 0.8), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
+            bar6.textColor = UIColor.green
+            bar6.text = String(count[5])+"시"
+            bar6.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
+            bar6.textAlignment = NSTextAlignment.center
+            addSubview(bar6)
         }
     }
 

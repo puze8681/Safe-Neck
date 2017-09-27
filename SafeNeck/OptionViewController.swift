@@ -53,19 +53,23 @@ class OptionViewController: UIViewController {
         let reportOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height * 0.12), 1)
         self.view.addSubview(reportOptionView)
         
-        let positionOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.12 + 64, width: view.frame.width, height: view.frame.height * 0.12), 2)
-        self.view.addSubview(positionOptionView)
-        let vibrationOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.24 + 64, width: view.frame.width, height: view.frame.height * 0.12), 3)
+        let vibrationOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.12 + 64, width: view.frame.width, height: view.frame.height * 0.12), 2)
         self.view.addSubview(vibrationOptionView)
         
-        let limitOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.36 + 64, width: view.frame.width, height: view.frame.height * 0.12), 4)
+        let limitOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.24 + 64, width: view.frame.width, height: view.frame.height * 0.12), 3)
         self.view.addSubview(limitOptionView)
         
-        let dailyOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.48 + 64, width: view.frame.width, height: view.frame.height * 0.12), 5)
+        let dailyOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.36 + 64, width: view.frame.width, height: view.frame.height * 0.12), 4)
         self.view.addSubview(dailyOptionView)
         
-        let weeklyOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.60 + 64, width: view.frame.width, height: view.frame.height * 0.12), 6)
+        let weeklyOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.48 + 64, width: view.frame.width, height: view.frame.height * 0.12), 5)
         self.view.addSubview(weeklyOptionView)
+        
+        let statusOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.60 + 64, width: view.frame.width, height: view.frame.height * 0.12), 6)
+        self.view.addSubview(statusOptionView)
+        
+        let sleepOptionView: OptionUIView = OptionUIView(frame: CGRect(x: 0, y: view.frame.height * 0.72 + 64, width: view.frame.width, height: view.frame.height * 0.12), 7)
+        self.view.addSubview(sleepOptionView)
     }
     //변경 버튼 클릭 실행
     func changeButtonClicked(){
@@ -94,8 +98,8 @@ class OptionViewController: UIViewController {
     
     class OptionUIView: UIView{
         
-        var title: [String] = ["리포트 시간 설정", "자세 경고 알림 설정", "진동 설정", "한계 시간 설정", "하루 목표 알림 개수 설정", "주간 목표 알림 개수 설정"]
-        var subTitle: [String] = ["리포트 업데이트 시간을 설정합니다", "자세 경고에 대한 자세의 호용범위를 설정합니다.", "진동 On/Off 옵션을 설정합니다.", "1초~10초로 설정 가능합니다.", "하루 경고 최대 개수는 100개입니다", "주간 경고 최대 개수는 700개입니다"]
+        var title: [String] = ["리포트 시간 설정", "자세 경고 알림 설정", "진동 설정", "한계 시간 설정", "하루 목표 알림 개수 설정", "주간 목표 알림 개수 설정", "실시간 상태 확인", "수면 모드"]
+        var subTitle: [String] = ["리포트 업데이트 시간을 설정합니다", "진동 On/Off 옵션을 설정합니다.", "1초~10초로 설정 가능합니다.", "하루 경고 최대 개수는 100개입니다", "주간 경고 최대 개수는 700개입니다", "이 칸을 누르면 실시간으로 상태 확인을 합니다", "수면 모드 On/Off 옵션을 설정합니다"]
         
         var type: Int!
         
@@ -125,7 +129,7 @@ class OptionViewController: UIViewController {
             subTitleLabel.textAlignment = NSTextAlignment.left
             addSubview(subTitleLabel)
 
-            if(type != 3){
+            if((type != 2) && (type != 7)){
                 let changeButton = UIButton(frame: CGRect(x: frame.width * 0.82 - 10, y: frame.height * 0.3, width: frame.width * 0.18, height: frame.height * 0.4))
                 changeButton.setTitle("CHANGE", for: .normal)
                 changeButton.setTitleColor(UIColor(red: 67/255, green: 67/255, blue: 67/255, alpha: 1), for: .normal)
@@ -144,7 +148,7 @@ class OptionViewController: UIViewController {
                 addSubview(changSwitch)
             }
             
-            if(type != 6){
+            if(type != 7){
             let underLineView = UIView(frame: CGRect(x: 10, y: frame.height - 1, width: frame.width - 20, height: 1))
             underLineView.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
             addSubview(underLineView)

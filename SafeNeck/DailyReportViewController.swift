@@ -30,6 +30,7 @@ class DailyReportViewController: UIViewController {
         setConditionView()
         setReportNoticeLabel()
         setCommentView()
+        setChartView()
         setSwipeType()
     }
     
@@ -54,6 +55,7 @@ class DailyReportViewController: UIViewController {
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 1.2 + 20)
         view.addSubview(scrollView)
     }
+    
     //내비게이션 바 생성
     func setNavigationBarView(){
         let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 44))
@@ -90,10 +92,10 @@ class DailyReportViewController: UIViewController {
         scrollView.addSubview(contentLabel)
     }
     
-//    func setChartView(){
-//        let chartView = ChartUIView(frame: CGRect(x: 10, y: view.frame.height * 0.7 + 15, width: view.frame.width - 20, height: view.frame.height * 0.4))
-//        scrollView.addSubview(chartView)
-//    }
+    func setChartView(){
+        let chartView = ChartUIView(frame: CGRect(x: 10, y: view.frame.height * 0.7 + 15, width: view.frame.width - 20, height: view.frame.height * 0.4),soGood: 25,good: 25,standard: 12,bad: 26,soBad: 12)
+        scrollView.addSubview(chartView)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

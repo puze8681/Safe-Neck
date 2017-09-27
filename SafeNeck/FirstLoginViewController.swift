@@ -63,7 +63,7 @@ class FirstLoginViewController: UIViewController{
     //상단 텍스트 라벨 생성
     func setTopLabelView(){
         let textLabel1 = UILabel(frame: CGRect(x: 10, y: view.frame.height * 0.12, width: view.frame.width - 20, height: view.frame.height * 0.05))
-        textLabel1.text = "Setting User Information"
+        textLabel1.text = "Let me know about you"
         textLabel1.font = UIFont(name: "NanumBarunGothicOTFBold", size: 16)
         textLabel1.textColor = UIColor.darkGray
         view.addSubview(textLabel1)
@@ -197,6 +197,7 @@ class FirstLoginViewController: UIViewController{
 //        }
     }
     
+    
     /*
     // MARK: - Navigation
 
@@ -265,7 +266,7 @@ class FirstLoginViewController: UIViewController{
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
             switch row {
             case 0...6:
-                subLabel.text = "Your AGE is " + ageStringValue[row]
+                subLabel.text = ageStringValue[row]
                 break
             default:
                 subLabel.text = "Choose your AGE"
@@ -313,7 +314,7 @@ class FirstLoginViewController: UIViewController{
         var text: String!
         var label : UILabel!
         var subLabel: UILabel!
-        let positionStringValue: [String] = ["(초,중,고) 학생", "대학생", "직장인", "일반인"]
+        let positionStringValue: [String] = ["(초,중,고) 학생", "대학생", "직장인", "일반인","사무/금융직","연구원","엔지니어","건축","디자이너"]
         var pickerView: UIPickerView!
         
         func numberOfComponents(in pickerView: UIPickerView)->Int{
@@ -331,12 +332,11 @@ class FirstLoginViewController: UIViewController{
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
             switch row {
             case 0...4:
-                subLabel.text = "Your POSITION is " + positionStringValue[row]
+                subLabel.text = positionStringValue[row]
                 break
             default:
                 subLabel.text = "Choose your POSITION"
             }
-            subLabel.textColor = UIColor.green
         }
 
         init(frame: CGRect, getText: String){
