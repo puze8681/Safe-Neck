@@ -330,6 +330,21 @@ class DailyReportViewController: UIViewController {
                 Segment(color: .white, value: 100)
             ]
             addSubview(smallPie)
+            
+            let soGoodPercentView = PercentageUIView(frame: CGRect(x: 0, y: frame.height * 0.8, width: frame.width * 0.2, height: frame.height * 0.2), type: 0, percent: soGood)
+            addSubview(soGoodPercentView)
+            
+            let goodPercentView = PercentageUIView(frame: CGRect(x: frame.width * 0.2, y: frame.height * 0.8, width: frame.width * 0.2, height: frame.height * 0.2), type: 1, percent: good)
+            addSubview(goodPercentView)
+            
+            let standardPercentView = PercentageUIView(frame: CGRect(x: frame.width * 0.4, y: frame.height * 0.8, width: frame.width * 0.2, height: frame.height * 0.2), type: 2, percent: standard)
+            addSubview(standardPercentView)
+            
+            let badPercentView = PercentageUIView(frame: CGRect(x: frame.width * 0.6, y: frame.height * 0.8, width: frame.width * 0.2, height: frame.height * 0.2), type: 3, percent: bad)
+            addSubview(badPercentView)
+            
+            let soBadPercentView = PercentageUIView(frame: CGRect(x: frame.width * 0.8, y: frame.height * 0.8, width: frame.width * 0.2, height: frame.height * 0.2), type: 4, percent: soBad)
+            addSubview(soBadPercentView)
         }
     }
     
@@ -338,6 +353,7 @@ class DailyReportViewController: UIViewController {
         var type: Int!
         var percent: Int!
         var color: [UIColor] = [.soGood, .good, .standard, .bad, .soBad]
+        var text: [String] = ["정상", "주의", "경고", "나쁨", "매우 나쁨"]
         
         init(frame: CGRect, type: Int, percent: Int){
             super.init(frame: frame)
@@ -353,18 +369,33 @@ class DailyReportViewController: UIViewController {
         
         func setLayOut(){
             let pieChartView = PieChartView()
-            pieChartView.frame = CGRect(x: 0, y: frame.height * 0.1, width: frame.width, height: frame.height * 0.6)
+            pieChartView.frame = CGRect(x: frame.width * 0.1, y: frame.width * 0.03, width: frame.width * 0.1, height: frame.width * 0.1)
             pieChartView.segments = [
                 Segment(color: color[type], value: 100),
             ]
             addSubview(pieChartView)
             
             let smallPie = PieChartView()
-            smallPie.frame = CGRect(x: frame.width * 0.3, y: frame.height * 0.275, width: frame.width * 0.4, height: frame.height * 0.25)
+            smallPie.frame = CGRect(x: frame.width * 0.12, y: frame.width * 0.05, width: frame.width * 0.05, height: frame.width * 0.05)
             smallPie.segments = [
                 Segment(color: .white, value: 100)
             ]
             addSubview(smallPie)
+            
+            let titleLabel = UILabel(frame: CGRect(x: frame.width * 0.1, y: 0, width: frame.width * 0.8, height: frame.height * 0.2))
+            titleLabel.text = text[type]
+            titleLabel.textColor = color[type]
+            titleLabel.font = UIFont(name: "NanumBarunGothicOTF", size: 10)
+            titleLabel.textAlignment = NSTextAlignment.center
+            addSubview(titleLabel)
+            
+            let percentLabel = UILabel(frame: CGRect(x: 0, y: frame.height * 0.2, width: frame.width, height: frame.height * 0.8))
+            percentLabel.text = String(percent) + "%"
+            percentLabel.textColor = UIColor(red: 123/255, green: 123/255, blue: 123/255, alpha: 123/255)
+            percentLabel.font = UIFont(name: "NanumBarunGothicOTF", size: 16)
+            percentLabel.textAlignment = NSTextAlignment.center
+            addSubview(percentLabel)
+
         }
     }
     
