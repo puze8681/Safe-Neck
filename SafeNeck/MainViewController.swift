@@ -185,7 +185,7 @@ class MainViewController: UIViewController {
             self.backgroundColor = getBackColor
             self.layer.borderWidth = 0
             self.layer.cornerRadius = 5
-            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 1, scale: true)
             self.title = getTitle
             self.textColor = getTextColor
             self.content = getContent
@@ -229,7 +229,7 @@ class MainViewController: UIViewController {
             self.backgroundColor = UIColor.white
             self.layer.borderWidth = 0
             self.layer.cornerRadius = 5
-            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 1, scale: true)
             setLayOut()
         }
         
@@ -307,7 +307,7 @@ class MainViewController: UIViewController {
             self.backgroundColor = UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1)
             self.layer.borderWidth = 1
             self.layer.borderColor = UIColor(red: 48/255, green: 65/255, blue: 71/255, alpha: 1).cgColor
-            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 1, scale: true)
             self.layer.cornerRadius = 5
             setLayOut()
         }

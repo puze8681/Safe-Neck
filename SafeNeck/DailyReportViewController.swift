@@ -127,7 +127,7 @@ class DailyReportViewController: UIViewController {
             self.typeThree = typeThree
             self.layer.borderWidth = 0
             self.layer.cornerRadius = 5
-            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 1, scale: true)
             setLayOut()
         }
         
@@ -252,7 +252,7 @@ class DailyReportViewController: UIViewController {
             self.backgroundColor = UIColor.green
             self.layer.borderWidth = 0
             self.layer.cornerRadius = 5
-            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 1, scale: true)
             setLayOut()
         }
         
@@ -304,7 +304,7 @@ class DailyReportViewController: UIViewController {
             self.soBad = soBad
             self.layer.borderWidth = 0
             self.layer.cornerRadius = 5
-            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 5, scale: true)
+            self.dropShadow(color: .lightGray, opacity: 1, offSet: CGSize(width: 0, height: 5), radius: 1, scale: true)
             setLayOut()
         }
         
