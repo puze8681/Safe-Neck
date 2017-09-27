@@ -407,7 +407,6 @@ class DailyReportViewController: UIViewController {
         // the value of a given segment – will be used to automatically calculate a ratio
         var value: CGFloat
     }
-    
     class PieChartView: UIView {
         
         /// An array of structs representing the segments of the pie chart
@@ -416,16 +415,13 @@ class DailyReportViewController: UIViewController {
                 setNeedsDisplay() // re-draw view when the values get set
             }
         }
-        
         override init(frame: CGRect) {
             super.init(frame: frame)
             isOpaque = false // when overriding drawRect, you must specify this to maintain transparency.
         }
-        
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
         }
-        
         override func draw(_ rect: CGRect) {
             
             // get current context

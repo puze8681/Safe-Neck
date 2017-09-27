@@ -8,9 +8,19 @@
 
 import UIKit
 import Alamofire
+import CoreBluetooth
 
-class FirstLoginViewController: UIViewController{
+class FirstLoginViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
 
+    var manager:CBCentralManager!
+    var peripheral:CBPeripheral!
+    
+    let BEAN_NAME = "Robu"
+    let BEAN_SCRATCH_UUID =
+        CBUUID(string: "a495ff21-c5b1-4b44-b512-1370f02d74de")
+    let BEAN_SERVICE_UUID =
+        CBUUID(string: "a495ff20-c5b1-4b44-b512-1370f02d74de")
+    
     let initURL = "http://soylatte.kr:8080/auth/init"
     var femaleButton : genderUIButton!
     var maleButton : genderUIButton!
@@ -23,7 +33,129 @@ class FirstLoginViewController: UIViewController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        manager = CBCentralManager(delegate: self, queue: nil)
         setUI()
+    }
+    
+    //Scan for Device
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        if central.state == CBManagerState.poweredOn {
+            central.scanForPeripherals(withServices: nil, options: nil)
+        } else {
+            print("Bluetooth not available.")
+        }
+    }
+    
+    //Connect to a Device
+    private func centralManager(
+        central: CBCentralManager,
+        didDiscoverPeripheral peripheral: CBPeripheral,
+        advertisementData: [String : AnyObject],
+        RSSI: NSNumber) {
+        let device = (advertisementData as NSDictionary)
+            .object(forKey: CBAdvertisementDataLocalNameKey)
+            as? NSString
+        
+        if device?.contains(BEAN_NAME) == true {
+            self.manager.stopScan()
+            
+            self.peripheral = peripheral
+            self.peripheral.delegate = self
+            
+            manager.connect(peripheral, options: nil)
+        }
+    }
+    
+    //Get Services
+    func centralManager(
+        central: CBCentralManager,
+        didConnectPeripheral peripheral: CBPeripheral) {
+        peripheral.discoverServices(nil)
+    }
+    
+    //Get Characteristics
+    func peripheral(
+        _ peripheral: CBPeripheral,
+        didDiscoverServices error: Error?) {
+        for service in peripheral.services! {
+            let thisService = service as CBService
+            
+            if service.uuid == BEAN_SERVICE_UUID {
+                peripheral.discoverCharacteristics(
+                    nil,
+                    for: thisService
+                )
+            }
+        }
+    }
+    
+    //Setup Notifications
+    func peripheral(
+        _ peripheral: CBPeripheral,
+        didDiscoverCharacteristicsFor service: CBService,
+        error: Error?) {
+        for characteristic in service.characteristics! {
+            let thisCharacteristic = characteristic as CBCharacteristic
+            
+            if thisCharacteristic.uuid == BEAN_SCRATCH_UUID {
+                self.peripheral.setNotifyValue(
+                    true,
+                    for: thisCharacteristic
+                )
+            }
+        }
+    }
+    
+    enum Bit: UInt8, CustomStringConvertible {
+        case zero, one
+        var description: String {
+            switch self {
+            case .one:
+                return "1"
+                
+            case .zero :
+                return "0"
+            default:
+                print("hi")
+                
+            }
+        }
+    }
+    
+    func bits(fromByte byte : UInt8) -> [Bit] {
+        var byte = byte
+        var bits = [Bit](repeating: .zero, count: 8)
+        for i in 0..<8 {
+            let currentBit = byte & 0x01
+            if currentBit != 0 {
+                bits[i] = .one
+            }
+            
+            byte >>= 1
+        }
+        return bits
+    }
+    
+    //Changes Are Coming
+    func peripheral(
+        _ peripheral: CBPeripheral,
+        didUpdateValueFor characteristic: CBCharacteristic,
+        error: Error?) {
+        let count:UInt32 = 0;
+        
+        if characteristic.uuid == BEAN_SCRATCH_UUID {
+//            characteristic.value!.getBytes(&count, length: Int(sizeof(UInt32)))
+            bits(fromByte: UInt8(count))
+            print("Changes Are C"+(NSString(format: "%llu", count) as String) as String)
+        }
+    }
+    
+    //Disconnect and Try Again
+    func centralManager(
+        _ central: CBCentralManager,
+        didDisconnectPeripheral peripheral: CBPeripheral,
+        error: Error?) {
+        central.scanForPeripherals(withServices: nil, options: nil)
     }
     
     //UI생성
@@ -37,6 +169,8 @@ class FirstLoginViewController: UIViewController{
         
         
     }
+    
+    
     
     //기본 UI 세팅
     func setUISetting(){
