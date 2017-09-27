@@ -176,9 +176,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print(response)
                 let stringStatusCode = String(describing: response.response?.statusCode)
                 //printing response
+                print(String(describing: response.response?.statusCode))
                 if(response.response?.statusCode == 200){
                     self.myAlert("Login SUCCESS", message: "WELCOME - SAFE NECK")
-                    self.navigationController?.popViewController(animated: true)
+                    let myViewController = TabBarViewController()
+                    let navController = UINavigationController(rootViewController: myViewController)
+                    self.present(navController, animated:true, completion: nil)
                 }else{
                     print("STATUS CODE : " + stringStatusCode)
                     self.myAlert("Login FAIL", message:"SERVER ERROR")

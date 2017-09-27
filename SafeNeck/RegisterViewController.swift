@@ -135,11 +135,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         registerButton.contentHorizontalAlignment = .center
         registerButton.addTarget(RegisterViewController(), action: #selector(registButtonClicked), for: .touchUpInside)
         view.addSubview(registerButton)
-
-//        let registerImage = UIImageView(frame: CGRect(x: 0, y: view.frame.height * 0.8, width: view.frame.width * 0.8, height: view.frame.height * 0.25))
-//        registerImage.image = UIImage(named: "ic_register_check")
-//        registerImage.contentMode = .scaleAspectFit
-//        view.addSubview(registerImage)
     }
     
     //백 버튼 실행
@@ -167,22 +162,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //회원가입 버튼 실행
     func registButtonClicked(){
-        print("regist")
-        self.navigationController?.pushViewController(FirstLoginViewController(), animated: true)
-
-//        if(nameTextField.text == ""){
-//            myAlert("Regist FAIL", message: "enter your NAME")
-//        }else if(idTextField.text == ""){
-//            myAlert("Regist FAIL", message: "enter your ID")
-//        }else if(pwTextField.text == ""){
-//            myAlert("Regist FAIL", message: "enter your PASSWORD")
-//        }else if(pwConfirmTextField.text == ""){
-//            myAlert("Regist FAIL", message: "enter your PASSWORD CONFIRM")
-//        }else if(pwConfirmTextField.text != pwTextField.text){
-//            myAlert("Regist FAIL", message: "confirm your PASSWORD")
-//        }else{
-//            regist(nameTextField.text!, idTextField.text!, pwTextField.text!, pwConfirmTextField.text!)
-//        }
+        if(nameTextField.text == ""){
+            myAlert("Regist FAIL", message: "enter your NAME")
+        }else if(idTextField.text == ""){
+            myAlert("Regist FAIL", message: "enter your ID")
+        }else if(pwTextField.text == ""){
+            myAlert("Regist FAIL", message: "enter your PASSWORD")
+        }else if(pwConfirmTextField.text == ""){
+            myAlert("Regist FAIL", message: "enter your PASSWORD CONFIRM")
+        }else if(pwConfirmTextField.text != pwTextField.text){
+            myAlert("Regist FAIL", message: "confirm your PASSWORD")
+        }else{
+            regist(nameTextField.text!, idTextField.text!, pwTextField.text!, pwConfirmTextField.text!)
+        }
     }
 
     //Alert 실행
@@ -207,6 +199,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 print(response)
                 let stringStatusCode = String(describing: response.response?.statusCode)
                 //printing response
+                print(String(describing: response.response?.statusCode))
                 if(response.response?.statusCode == 200){
                     self.navigationController?.pushViewController(FirstLoginViewController(), animated: true)
                     self.myAlert("Regist SUCCESS", message: "WELCOME - SAFE NECK")
