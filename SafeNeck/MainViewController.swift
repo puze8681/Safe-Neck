@@ -354,26 +354,55 @@ class MainViewController: UIViewController {
 
             let bar1 = UIView(frame:CGRect(x: (frame.width * 0.1), y: (frame.height * 0.8) - height1, width: frame.width * 0.1, height: height1))
             bar1.backgroundColor = UIColor.green
-            addSubview(bar1)
             
             let bar2 = UIView(frame:CGRect(x: (frame.width * 0.24), y: (frame.height * 0.8) - height2, width: frame.width * 0.1, height: height2))
             bar2.backgroundColor = UIColor.green
-            addSubview(bar2)
             
             let bar3 = UIView(frame:CGRect(x: (frame.width * 0.38), y: (frame.height * 0.8) - height3, width: frame.width * 0.1, height: height3))
             bar3.backgroundColor = UIColor.green
-            addSubview(bar3)
             
             let bar4 = UIView(frame:CGRect(x: (frame.width * 0.52), y: (frame.height * 0.8) - height4, width: frame.width * 0.1, height: height4))
             bar4.backgroundColor = UIColor.green
-            addSubview(bar4)
             
             let bar5 = UIView(frame:CGRect(x: (frame.width * 0.66), y: (frame.height * 0.8) - height5, width: frame.width * 0.1, height: height5))
             bar5.backgroundColor = UIColor.green
-            addSubview(bar5)
             
             let bar6 = UIView(frame:CGRect(x: (frame.width * 0.8), y: (frame.height * 0.8) - height6, width: frame.width * 0.1, height: height6))
             bar6.backgroundColor = UIColor.green
+            
+            let path1 = UIBezierPath(roundedRect:bar1.bounds, byRoundingCorners:[.topRight, .topLeft], cornerRadii: CGSize(width: 5, height:  5))
+            let path2 = UIBezierPath(roundedRect:bar2.bounds, byRoundingCorners:[.topRight, .topLeft], cornerRadii: CGSize(width: 5, height:  5))
+            let path3 = UIBezierPath(roundedRect:bar3.bounds, byRoundingCorners:[.topRight, .topLeft], cornerRadii: CGSize(width: 5, height:  5))
+            let path4 = UIBezierPath(roundedRect:bar4.bounds, byRoundingCorners:[.topRight, .topLeft], cornerRadii: CGSize(width: 5, height:  5))
+            let path5 = UIBezierPath(roundedRect:bar5.bounds, byRoundingCorners:[.topRight, .topLeft], cornerRadii: CGSize(width: 5, height:  5))
+            let path6 = UIBezierPath(roundedRect:bar6.bounds, byRoundingCorners:[.topRight, .topLeft], cornerRadii: CGSize(width: 5, height:  5))
+            
+            let maskLayer1 = CAShapeLayer()
+            let maskLayer2 = CAShapeLayer()
+            let maskLayer3 = CAShapeLayer()
+            let maskLayer4 = CAShapeLayer()
+            let maskLayer5 = CAShapeLayer()
+            let maskLayer6 = CAShapeLayer()
+
+            maskLayer1.path = path1.cgPath
+            maskLayer2.path = path2.cgPath
+            maskLayer3.path = path3.cgPath
+            maskLayer4.path = path4.cgPath
+            maskLayer5.path = path5.cgPath
+            maskLayer6.path = path6.cgPath
+            
+            bar1.layer.mask = maskLayer1
+            bar2.layer.mask = maskLayer2
+            bar3.layer.mask = maskLayer3
+            bar4.layer.mask = maskLayer4
+            bar5.layer.mask = maskLayer5
+            bar6.layer.mask = maskLayer6
+            
+            addSubview(bar1)
+            addSubview(bar2)
+            addSubview(bar3)
+            addSubview(bar4)
+            addSubview(bar5)
             addSubview(bar6)
         }
         
@@ -429,42 +458,42 @@ class MainViewController: UIViewController {
         func setTimeView(_ time : [Int]){
             let bar1 = UILabel(frame:CGRect(x: (frame.width * 0.1), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
             bar1.textColor = UIColor.green
-            bar1.text = String(count[0])+"시"
+            bar1.text = String(time[0])+"시"
             bar1.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             bar1.textAlignment = NSTextAlignment.center
             addSubview(bar1)
             
             let bar2 = UILabel(frame:CGRect(x: (frame.width * 0.24), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
             bar2.textColor = UIColor.green
-            bar2.text = String(count[1])+"시"
+            bar2.text = String(time[1])+"시"
             bar2.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             bar2.textAlignment = NSTextAlignment.center
             addSubview(bar2)
             
             let bar3 = UILabel(frame:CGRect(x: (frame.width * 0.38), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
             bar3.textColor = UIColor.green
-            bar3.text = String(count[2])+"시"
+            bar3.text = String(time[2])+"시"
             bar3.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             bar3.textAlignment = NSTextAlignment.center
             addSubview(bar3)
             
             let bar4 = UILabel(frame:CGRect(x: (frame.width * 0.52), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
             bar4.textColor = UIColor.green
-            bar4.text = String(count[3])+"시"
+            bar4.text = String(time[3])+"시"
             bar4.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             bar4.textAlignment = NSTextAlignment.center
             addSubview(bar4)
             
             let bar5 = UILabel(frame:CGRect(x: (frame.width * 0.66), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
             bar5.textColor = UIColor.green
-            bar5.text = String(count[4])+"시"
+            bar5.text = String(time[4])+"시"
             bar5.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             bar5.textAlignment = NSTextAlignment.center
             addSubview(bar5)
             
             let bar6 = UILabel(frame:CGRect(x: (frame.width * 0.8), y: (frame.height * 0.8), width: frame.width * 0.1, height: frame.height * 0.1))
             bar6.textColor = UIColor.green
-            bar6.text = String(count[5])+"시"
+            bar6.text = String(time[5])+"시"
             bar6.font = UIFont(name: "NanumBarunGothicOTFBold", size: 12)
             bar6.textAlignment = NSTextAlignment.center
             addSubview(bar6)
